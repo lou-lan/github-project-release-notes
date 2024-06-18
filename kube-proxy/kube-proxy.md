@@ -1,5 +1,19 @@
 # kube-proxy
 
+## 1.30.0
+
+### Bug or Regression
+
+- 修复了在 `1.26.0+` 版本中引入的 `kube-proxy` 回归问题，使 externalIPs 在 externalTrafficPolicy: Local 下正常工作。([#121919](https://github.com/kubernetes/kubernetes/pull/121919), [@uablrek](https://github.com/uablrek))
+- kube-proxy：修复了在 nftables 模式下 LoadBalancerSourceRanges 无法正常工作的问题。（[#122614](https://github.com/kubernetes/kubernetes/pull/122614), [@tnqn](https://github.com/tnqn)）
+- 修复了 `1.27` 及之后版本的 kube-proxy iptables 模式中的竞争条件，该条件可能导致某些更新丢失（例如，当服务获得新的端点时，新端点的规则可能要等到很久以后才会添加）。([#122204](https://github.com/kubernetes/kubernetes/pull/122204), [@danwinship](https://github.com/danwinship))
+
+### Other (Cleanup or Flake)
+
+- 将 kube-proxy 迁移到使用 [contextual logging](https://k8s.io/docs/concepts/cluster-administration/system-logs/#contextual-logging). ([#122197](https://github.com/kubernetes/kubernetes/pull/122197), [@fatsheep9146](https://github.com/fatsheep9146))
+- kube-proxy 的 nftables 模式现在兼容内核 5.4。 ([#122296](https://github.com/kubernetes/kubernetes/pull/122296), [@tnqn](https://github.com/tnqn))
+
+
 ## 1.29.1
 
 - 修复了在 1.27 及更高版本的 kube-proxy 的 iptables 模式中存在的竞争条件，该条件可能导致某些更新丢失（例如，当一个服务获得新的端点时，新的端点规则可能要到很久之后才会被添加）。([#122756](https://github.com/kubernetes/kubernetes/pull/122756), [@hakman](https://github.com/hakman)) [SIG Network]
