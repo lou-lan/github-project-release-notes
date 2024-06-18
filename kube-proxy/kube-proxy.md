@@ -18,6 +18,10 @@
 
 - 修复了在 1.27 及更高版本的 kube-proxy 的 iptables 模式中存在的竞争条件，该条件可能导致某些更新丢失（例如，当一个服务获得新的端点时，新的端点规则可能要到很久之后才会被添加）。([#122756](https://github.com/kubernetes/kubernetes/pull/122756), [@hakman](https://github.com/hakman)) [SIG Network]
 
+### API Change
+
+- 更新了 `kube-proxy` 命令行文档，澄清 `--bind-address` 实际上与绑定到地址无关，并且你可能实际上不需要使用它。 ([#120274](https://github.com/kubernetes/kubernetes/pull/120274), [@danwinship](https://github.com/danwinship))
+
 ## v1.28.0
 
 ### 紧急升级说明
